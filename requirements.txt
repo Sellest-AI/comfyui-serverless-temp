@@ -1,0 +1,9 @@
+Pillow
+requests
+python-dotenv
+runpod
+comfy-cli
+xformers
+
+# Comfy UI (broken dependencies not being picked up by restore_snapshot)
+opencv-contrib-python # required by comfyui-base64-to-image & comfyui_layerstyle

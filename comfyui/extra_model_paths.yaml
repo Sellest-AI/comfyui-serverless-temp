@@ -1,0 +1,62 @@
+comfyui:
+    base_path: /comfyui/
+    # You can use is_default to mark that these folders should be listed first, and used as the default dirs for eg downloads
+    is_default: true
+
+built-in-volume:
+    base_path: /comfy-models/
+    checkpoints: checkpoints/
+    clip: clip/
+    clip_vision: clip_vision/
+    configs: configs/
+    depthanything: depthanything/
+    controlnet: controlnet/
+    diffusion_models: |
+                 diffusion_models
+                 unet
+    embeddings: embeddings/
+    gligen: gligen/
+    hypernetworks: hypernetworks/
+    ipadapter: ipadapter/
+    loras: loras/
+    photomaker: photomaker/
+    florence2: florence2/
+    llm_gguf: llm_gguf/
+    LLM: LLM/
+    inpaint: inpaint/
+    style_models: style_models/
+    text_encoders: text_encoders/
+    unet: unet/
+    upscale_models: upscale_models/
+    vae: vae/
+    vae_approx: vae_approx/
+    rife: rife/
+
+runpod-volume:
+    base_path: /runpod-volume/ComfyUI/
+    checkpoints: models/checkpoints/
+    clip: models/clip/
+    clip_vision: models/clip_vision/
+    configs: models/configs/
+    depthanything: models/depthanything/
+    controlnet: models/controlnet/
+    inpaint: models/inpaint/
+    florence2: models/florence2/
+    llm_gguf: models/llm_gguf/
+    LLM: models/LLM/
+    diffusion_models: |
+                 models/diffusion_models
+                 models/unet
+    embeddings: models/embeddings/
+    gligen: models/gligen/
+    hypernetworks: models/hypernetworks/
+    ipadapter: models/ipadapter/
+    loras: models/loras/
+    photomaker: models/photomaker/
+    style_models: models/style_models/
+    text_encoders: models/text_encoders/
+    unet: models/unet/
+    upscale_models: models/upscale_models/
+    vae: models/vae/
+    vae_approx: models/vae_approx/
+    rife: models/rife/

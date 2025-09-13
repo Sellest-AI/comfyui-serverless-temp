@@ -1,0 +1,681 @@
+{
+  "6": {
+    "inputs": {
+      "text": "Close-up shot of a tall white bottle with a wooden cap and decorative bark-like base, standing on a moss-covered rock. The bottle is surrounded by lush green moss and delicate white flowers. As the scene begins, the white flowers rapidly grow taller and larger, their stems extending upwards and outward until they completely envelop and hide the bottle from view. Simultaneously, the camera smoothly dollies back and zooms out to the left maintaining it as the focal center throughout the movement. Soft, diffused lighting enhances the vibrant greens and whites, creating a serene, magical atmosphere that emphasizes the product's connection to nature.",
+      "clip": [
+        "38",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Positive Prompt)"
+    }
+  },
+  "7": {
+    "inputs": {
+      "text": "色调艳丽，过曝，静态，细节模糊不清，字幕，风格，作品，画作，画面，静止，整体发灰，最差质量，低质量，JPEG压缩残留，丑陋的，残缺的，多余的手指，画得不好的手部，画得不好的脸部，畸形的，毁容的，形态畸形的肢体，手指融合，静止不动的画面，杂乱的背景，三条腿，背景人很多，倒着走, Slow motion",
+      "clip": [
+        "38",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Negative Prompt)"
+    }
+  },
+  "8": {
+    "inputs": {
+      "samples": [
+        "140",
+        0
+      ],
+      "vae": [
+        "39",
+        0
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "38": {
+    "inputs": {
+      "clip_name": "umt5_xxl_fp8_e4m3fn_scaled.safetensors",
+      "type": "wan",
+      "device": "default"
+    },
+    "class_type": "CLIPLoader",
+    "_meta": {
+      "title": "Charger CLIP"
+    }
+  },
+  "39": {
+    "inputs": {
+      "vae_name": "Wan2.1_VAE.safetensors"
+    },
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "Charger VAE"
+    }
+  },
+  "50": {
+    "inputs": {
+      "width": [
+        "90",
+        3
+      ],
+      "height": [
+        "90",
+        4
+      ],
+      "length": [
+        "184",
+        0
+      ],
+      "batch_size": 1,
+      "positive": [
+        "6",
+        0
+      ],
+      "negative": [
+        "7",
+        0
+      ],
+      "vae": [
+        "39",
+        0
+      ],
+      "start_image": [
+        "90",
+        0
+      ]
+    },
+    "class_type": "WanImageToVideo",
+    "_meta": {
+      "title": "WanImageVersVidéo"
+    }
+  },
+  "52": {
+    "inputs": {
+      "image": "8794465203cd2c75d04117496ec0357b.jpg"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Charger Image"
+    }
+  },
+  "61": {
+    "inputs": {
+      "unet_name": "Wan2.2-I2V-A14B-HighNoise-Q6_K.gguf"
+    },
+    "class_type": "UnetLoaderGGUF",
+    "_meta": {
+      "title": "Unet Loader (GGUF) (High)"
+    }
+  },
+  "62": {
+    "inputs": {
+      "unet_name": "Wan2.2-I2V-A14B-LowNoise-Q6_K.gguf"
+    },
+    "class_type": "UnetLoaderGGUF",
+    "_meta": {
+      "title": "Unet Loader (GGUF) (Low)"
+    }
+  },
+  "64": {
+    "inputs": {
+      "lora_name": "wan2.2_i2v_lightx2v_4steps_lora_v1_high_noise.safetensors",
+      "strength_model": 0.8,
+      "model": [
+        "120",
+        0
+      ]
+    },
+    "class_type": "LoraLoaderModelOnly",
+    "_meta": {
+      "title": "LoraLoaderModelOnly"
+    }
+  },
+  "66": {
+    "inputs": {
+      "lora_name": "wan2.2_i2v_lightx2v_4steps_lora_v1_low_noise.safetensors",
+      "strength_model": 1,
+      "model": [
+        "119",
+        0
+      ]
+    },
+    "class_type": "LoraLoaderModelOnly",
+    "_meta": {
+      "title": "LoraLoaderModelOnly"
+    }
+  },
+  "88": {
+    "inputs": {
+      "reuse_threshold": 0.8,
+      "start_percent": 0,
+      "end_percent": 1,
+      "verbose": false,
+      "model": [
+        "64",
+        0
+      ]
+    },
+    "class_type": "EasyCache",
+    "_meta": {
+      "title": "EasyCache"
+    }
+  },
+  "89": {
+    "inputs": {
+      "reuse_threshold": 0.85,
+      "start_percent": 0,
+      "end_percent": 1,
+      "verbose": false,
+      "model": [
+        "66",
+        0
+      ]
+    },
+    "class_type": "EasyCache",
+    "_meta": {
+      "title": "EasyCache"
+    }
+  },
+  "90": {
+    "inputs": {
+      "aspect_ratio": "original",
+      "proportional_width": 1,
+      "proportional_height": 1,
+      "fit": "fill",
+      "method": "lanczos",
+      "round_to_multiple": "8",
+      "scale_to_side": "total_pixel(kilo pixel)",
+      "scale_to_length": [
+        "183",
+        0
+      ],
+      "background_color": "#000000",
+      "image": [
+        "52",
+        0
+      ]
+    },
+    "class_type": "LayerUtility: ImageScaleByAspectRatio V2",
+    "_meta": {
+      "title": "LayerUtility: ImageScaleByAspectRatio V2"
+    }
+  },
+  "91": {
+    "inputs": {
+      "value": 922
+    },
+    "class_type": "PrimitiveInt",
+    "_meta": {
+      "title": "720p (150-180s)"
+    }
+  },
+  "92": {
+    "inputs": {
+      "source_fps": 16,
+      "target_fps": 32,
+      "scale": 1,
+      "model_name": "flownet.pkl",
+      "images": [
+        "172",
+        0
+      ]
+    },
+    "class_type": "RIFEInterpolation",
+    "_meta": {
+      "title": "RIFE Frame Interpolation"
+    }
+  },
+  "93": {
+    "inputs": {
+      "frame_rate": 32,
+      "loop_count": 0,
+      "filename_prefix": "wan2_2",
+      "format": "video/h264-mp4",
+      "pix_fmt": "yuv420p",
+      "crf": 28,
+      "save_metadata": false,
+      "trim_to_audio": false,
+      "pingpong": false,
+      "save_output": false,
+      "images": [
+        "92",
+        0
+      ]
+    },
+    "class_type": "VHS_VideoCombine",
+    "_meta": {
+      "title": "Video Combine 🎥🅥🅗🅢"
+    }
+  },
+  "96": {
+    "inputs": {
+      "value": 8
+    },
+    "class_type": "PrimitiveInt",
+    "_meta": {
+      "title": "Steps"
+    }
+  },
+  "107": {
+    "inputs": {
+      "sage_attention": "auto",
+      "model": [
+        "62",
+        0
+      ]
+    },
+    "class_type": "PathchSageAttentionKJ",
+    "_meta": {
+      "title": "Patch Sage Attention KJ"
+    }
+  },
+  "108": {
+    "inputs": {
+      "sage_attention": "auto",
+      "model": [
+        "61",
+        0
+      ]
+    },
+    "class_type": "PathchSageAttentionKJ",
+    "_meta": {
+      "title": "Patch Sage Attention KJ"
+    }
+  },
+  "110": {
+    "inputs": {
+      "value": 400
+    },
+    "class_type": "PrimitiveInt",
+    "_meta": {
+      "title": "Résolution 480p"
+    }
+  },
+  "111": {
+    "inputs": {
+      "value": 729
+    },
+    "class_type": "PrimitiveInt",
+    "_meta": {
+      "title": "640p (110-130s)"
+    }
+  },
+  "114": {
+    "inputs": {
+      "value": 594
+    },
+    "class_type": "PrimitiveInt",
+    "_meta": {
+      "title": "580p (85-100s)"
+    }
+  },
+  "116": {
+    "inputs": {
+      "value": 479
+    },
+    "class_type": "PrimitiveInt",
+    "_meta": {
+      "title": "520p (50-70s)"
+    }
+  },
+  "119": {
+    "inputs": {
+      "backend": "inductor",
+      "fullgraph": false,
+      "mode": "default",
+      "dynamic": false,
+      "compile_transformer_blocks_only": true,
+      "dynamo_cache_size_limit": 64,
+      "model": [
+        "107",
+        0
+      ]
+    },
+    "class_type": "TorchCompileModelWanVideoV2",
+    "_meta": {
+      "title": "TorchCompileModelWanVideoV2"
+    }
+  },
+  "120": {
+    "inputs": {
+      "backend": "inductor",
+      "fullgraph": false,
+      "mode": "default",
+      "dynamic": false,
+      "compile_transformer_blocks_only": true,
+      "dynamo_cache_size_limit": 64,
+      "model": [
+        "108",
+        0
+      ]
+    },
+    "class_type": "TorchCompileModelWanVideoV2",
+    "_meta": {
+      "title": "TorchCompileModelWanVideoV2"
+    }
+  },
+  "140": {
+    "inputs": {
+      "boundary": 0.9,
+      "seed": [
+        "164",
+        0
+      ],
+      "steps": [
+        "96",
+        0
+      ],
+      "cfg_high_noise": 1,
+      "cfg_low_noise": 1,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "sigma_shift": 6,
+      "denoise": 1,
+      "model_high_noise": [
+        "88",
+        0
+      ],
+      "model_low_noise": [
+        "89",
+        0
+      ],
+      "positive": [
+        "50",
+        0
+      ],
+      "negative": [
+        "50",
+        1
+      ],
+      "latent_image": [
+        "50",
+        2
+      ]
+    },
+    "class_type": "WanMoeKSampler",
+    "_meta": {
+      "title": "Wan MoE KSampler"
+    }
+  },
+  "164": {
+    "inputs": {
+      "value": -717726451736369
+    },
+    "class_type": "PrimitiveInt",
+    "_meta": {
+      "title": "Seed"
+    }
+  },
+  "166": {
+    "inputs": {
+      "value": 231
+    },
+    "class_type": "PrimitiveInt",
+    "_meta": {
+      "title": "Résolution 360p"
+    }
+  },
+  "168": {
+    "inputs": {
+      "value": 2074
+    },
+    "class_type": "PrimitiveInt",
+    "_meta": {
+      "title": "Résolution 1080p"
+    }
+  },
+  "172": {
+    "inputs": {
+      "aspect_ratio": "original",
+      "proportional_width": 1,
+      "proportional_height": 1,
+      "fit": "fill",
+      "method": "lanczos",
+      "round_to_multiple": "8",
+      "scale_to_side": "total_pixel(kilo pixel)",
+      "scale_to_length": 2074,
+      "background_color": "#000000",
+      "image": [
+        "8",
+        0
+      ]
+    },
+    "class_type": "LayerUtility: ImageScaleByAspectRatio V2",
+    "_meta": {
+      "title": "1080p Upscale"
+    }
+  },
+  "180": {
+    "inputs": {
+      "value": 81
+    },
+    "class_type": "PrimitiveInt",
+    "_meta": {
+      "title": "5s"
+    }
+  },
+  "181": {
+    "inputs": {
+      "value": 49
+    },
+    "class_type": "PrimitiveInt",
+    "_meta": {
+      "title": "3s"
+    }
+  },
+  "183": {
+    "inputs": {
+      "value": 922
+    },
+    "class_type": "PrimitiveInt",
+    "_meta": {
+      "title": "Resolution (720p)"
+    }
+  },
+  "184": {
+    "inputs": {
+      "value": 81
+    },
+    "class_type": "PrimitiveInt",
+    "_meta": {
+      "title": "Duration (5s)"
+    }
+  },
+  "206": {
+    "inputs": {
+      "value": 164458474374403
+    },
+    "class_type": "PrimitiveInt",
+    "_meta": {
+      "title": "Random"
+    }
+  },
+  "207": {
+    "inputs": {
+      "prefix": "_",
+      "suffix": "",
+      "input": [
+        "206",
+        0
+      ]
+    },
+    "class_type": "SomethingToString",
+    "_meta": {
+      "title": "Something To String"
+    }
+  },
+  "208": {
+    "inputs": {
+      "prefix": "video_",
+      "suffix": [
+        "207",
+        0
+      ],
+      "input": [
+        "164",
+        0
+      ]
+    },
+    "class_type": "SomethingToString",
+    "_meta": {
+      "title": "Something To String"
+    }
+  },
+  "209": {
+    "inputs": {
+      "inputcount": 3,
+      "delimiter": "",
+      "return_list": false,
+      "Update inputs": null,
+      "string_1": [
+        "212",
+        0
+      ],
+      "string_2": [
+        "217",
+        0
+      ],
+      "string_3": [
+        "210",
+        0
+      ]
+    },
+    "class_type": "JoinStringMulti",
+    "_meta": {
+      "title": "Join String Multi"
+    }
+  },
+  "210": {
+    "inputs": {
+      "value": "\" }"
+    },
+    "class_type": "PrimitiveString",
+    "_meta": {
+      "title": "Chaîne"
+    }
+  },
+  "212": {
+    "inputs": {
+      "value": "{ \"type\":\"image\", \"url\": \""
+    },
+    "class_type": "PrimitiveString",
+    "_meta": {
+      "title": "Chaîne"
+    }
+  },
+  "213": {
+    "inputs": {
+      "string": [
+        "217",
+        0
+      ],
+      "substring": ".png",
+      "case_sensitive": true
+    },
+    "class_type": "StringContains",
+    "_meta": {
+      "title": "Contains"
+    }
+  },
+  "214": {
+    "inputs": {
+      "if_condition": [
+        "213",
+        0
+      ],
+      "when_TRUE": [
+        "219",
+        0
+      ],
+      "when_FALSE": [
+        "220",
+        0
+      ]
+    },
+    "class_type": "LayerUtility: If ",
+    "_meta": {
+      "title": "LayerUtility: If"
+    }
+  },
+  "215": {
+    "inputs": {
+      "root_dir": "output",
+      "file": [
+        "214",
+        0
+      ],
+      "append": "overwrite",
+      "insert": true,
+      "text": [
+        "209",
+        0
+      ]
+    },
+    "class_type": "SaveText|pysssss",
+    "_meta": {
+      "title": "Save Text 🐍"
+    }
+  },
+  "217": {
+    "inputs": {
+      "filename_prefix": [
+        "208",
+        0
+      ],
+      "filenames": [
+        "93",
+        0
+      ]
+    },
+    "class_type": "SaveVideoFilesS3",
+    "_meta": {
+      "title": "Save Video Files to S3"
+    }
+  },
+  "218": {
+    "inputs": {
+      "value": 36622209669752
+    },
+    "class_type": "PrimitiveInt",
+    "_meta": {
+      "title": "Random"
+    }
+  },
+  "219": {
+    "inputs": {
+      "prefix": "_",
+      "suffix": "-image-url.json",
+      "input": [
+        "218",
+        0
+      ]
+    },
+    "class_type": "SomethingToString",
+    "_meta": {
+      "title": "Image Filename"
+    }
+  },
+  "220": {
+    "inputs": {
+      "prefix": "_",
+      "suffix": "-video-url.json",
+      "input": [
+        "218",
+        0
+      ]
+    },
+    "class_type": "SomethingToString",
+    "_meta": {
+      "title": "Video Filename"
+    }
+  }
+}

@@ -1,0 +1,21 @@
+services:
+  comfy-ui-serverless:
+    image: comfy-ui-serverless
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: comfy-ui-serverless
+    volumes:
+      # Map a local directory to /runpod-volume inside the container
+      - ./storage/runpod-volume:/runpod-volume
+      # Copy the comfy-models & remove the line from the Dockerfile
+      # - ./storage/comfy-models:/comfy-models
+      # Runpod test with the test-input.json file
+      - ./tests/test_input.json:/test_input.json
+    environment:
+      # Pass any environment variables you need
+      NVIDIA_VISIBLE_DEVICES: all
+      NVIDIA_DRIVER_CAPABILITIES: compute,utility
+    runtime: nvidia
+    ports:
+      - 3000:3000
