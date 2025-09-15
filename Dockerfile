@@ -8,13 +8,16 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 WORKDIR /
 
-# Upgrade apt packages and install required dependencies
+# Upgrade apt packages and install required dependencies (single RUN to avoid leftover layers)
 RUN apt update && \
   apt upgrade -y && \
   apt install -y \
   software-properties-common \
   python3-dev \
   python3-pip \
+  python3.11 \
+  python3.11-dev \
+  python3.11-venv \
   fonts-dejavu-core \
   rsync \
   git \
@@ -30,11 +33,9 @@ RUN apt update && \
   libxrender1 \
   libxext6 \
   ffmpeg \
-  git-lfs \
   libgoogle-perftools4 \
   libtcmalloc-minimal4 \
   procps && \
-  apt install -y python3.11 python3.11-dev python3.11-venv && \
   apt-get autoremove -y && \
   rm -rf /var/lib/apt/lists/* && \
   apt-get clean -y
@@ -48,9 +49,11 @@ RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.11 1
 # Clean up to reduce image size
 RUN apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/lists/*
 
-# Copy requirements file and install dependencies
+# Copy requirements file and install dependencies (clear pip cache in same RUN)
 COPY requirements.txt .
-RUN pip install --upgrade pip && pip install -r requirements.txt
+RUN pip install --upgrade pip && \
+  pip install -r requirements.txt && \
+  pip cache purge || true
 
 # Install comfy-cli
 RUN comfy --skip-prompt --workspace=/comfyui install --nvidia
