@@ -2,103 +2,20 @@
   "input": {
     "workflow": "custom",
     "payload": {
-      "3": {
+      "10": {
         "inputs": {
-          "seed": 524692848975339,
-          "steps": 20,
-          "cfg": 8,
-          "sampler_name": "euler",
-          "scheduler": "normal",
-          "denoise": 1,
-          "model": [
-            "4",
-            0
-          ],
-          "positive": [
-            "6",
-            0
-          ],
-          "negative": [
-            "7",
-            0
-          ],
-          "latent_image": [
-            "5",
-            0
-          ]
+          "url_or_path": "https://cdn.prod.website-files.com/67d20fb9f56ff2ec6a7a657d/683cd0ee11462aef4a016ef6_runpod%20lowercase.webp"
         },
-        "class_type": "KSampler",
+        "class_type": "LoadImageFromUrlOrPath",
         "_meta": {
-          "title": "KSampler"
+          "title": "LoadImageFromUrlOrPath"
         }
       },
-      "4": {
-        "inputs": {
-          "ckpt_name": "sdXL_v10VAEFix.safetensors"
-        },
-        "class_type": "CheckpointLoaderSimple",
-        "_meta": {
-          "title": "Charger Point de Contrôle"
-        }
-      },
-      "5": {
-        "inputs": {
-          "width": 512,
-          "height": 512,
-          "batch_size": 1
-        },
-        "class_type": "EmptyLatentImage",
-        "_meta": {
-          "title": "Image Latente Vide"
-        }
-      },
-      "6": {
-        "inputs": {
-          "text": "beautiful scenery nature glass bottle landscape, , purple galaxy bottle,",
-          "clip": [
-            "4",
-            1
-          ]
-        },
-        "class_type": "CLIPTextEncode",
-        "_meta": {
-          "title": "CLIP Text Encode (Prompt)"
-        }
-      },
-      "7": {
-        "inputs": {
-          "text": "text, watermark",
-          "clip": [
-            "4",
-            1
-          ]
-        },
-        "class_type": "CLIPTextEncode",
-        "_meta": {
-          "title": "CLIP Text Encode (Prompt)"
-        }
-      },
-      "8": {
-        "inputs": {
-          "samples": [
-            "3",
-            0
-          ],
-          "vae": [
-            "4",
-            2
-          ]
-        },
-        "class_type": "VAEDecode",
-        "_meta": {
-          "title": "VAE Decode"
-        }
-      },
-      "9": {
+      "12": {
         "inputs": {
           "filename_prefix": "ComfyUI",
           "images": [
-            "8",
+            "10",
             0
           ]
         },

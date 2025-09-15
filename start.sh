@@ -7,8 +7,8 @@ mkdir -p /runpod-volume/logs
 # Create symlink
 ln -s /runpod-volume/logs /comfyui-logs
 
-# echo "Copy Runpod Test"
-# cp /test_input.json /comfyui/test_input.json
+echo "Copy Runpod Test"
+cp /test_input.json /comfyui/test_input.json
 
 echo "Initializing ENV variables"
 
